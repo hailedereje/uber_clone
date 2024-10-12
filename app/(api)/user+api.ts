@@ -3,6 +3,7 @@ import { neon } from "@neondatabase/serverless";
 export const POST = async (request: Request) => {
   try {
     const sql = neon(`${process.env.NEON_DATABASE}`);
+    console.log(process.env.NEON_DATABASE);
     const { name, email, clerkId } = await request.json();
 
     if (!name || !email || !clerkId) {
@@ -17,7 +18,7 @@ export const POST = async (request: Request) => {
                 name,
                 email,
                 clerk_id
-            )
+            ) 
             VALUES ( ${name}, ${email}, ${clerkId})
         `;
 
